@@ -1,0 +1,119 @@
+// bitcoin colors
+$bitcoin-orange:#eda049;
+$bitcoin-gray:#4d4d4d;
+$bitcoin-light-orange:#f2b872;
+$bitcoin-dark-orange:#f58616;
+$bitcoin-brown:#bf8b5e;
+
+$bitcoin-white:#cccccc;
+
+
+// Body
+$body-bg: $bitcoin-gray;
+
+$blue:#2b589b;
+$green:#217446;
+$orange: #cc7e00;
+$red:#b8462b;
+$purple:#80397b;
+$light-blue:#0086cc;
+
+$main-color:$bitcoin-gray;
+
+$top-drag-height:25px;
+
+// Brands
+$brand-primary: $blue;
+$brand-info: $light-blue;
+$brand-success: $green;
+$brand-warning: $orange;
+$brand-danger: #b8462b;
+
+// files
+$files-left-width:250px;
+$files-divider-width:3px;
+$files-divider-color:#ddd;
+
+// Typography
+//$font-family-sans-serif: "Raleway", sans-serif;
+$font-size-base: 14px;
+$line-height-base: 1.6;
+$text-color: #636b6f;
+
+// Navbar
+$navbar-default-bg: #fff;
+
+// Buttons
+$btn-default-color: $text-color;
+
+// Inputs
+$input-border: lighten($text-color, 40%);
+$input-border-focus: lighten($brand-primary, 25%);
+$input-color-placeholder: lighten($text-color, 30%);
+
+// Panels
+$panel-default-heading-bg: #333;
+
+// navbar
+
+//=== Inverted navbar
+// Reset inverted navbar basics
+$navbar-inverse-color:                      #fff;
+$navbar-inverse-bg:                         $main-color;
+$navbar-inverse-border:                     $main-color;
+//$navbar-default-link-color:                 #333;
+$navbar-inverse-link-color:                 $navbar-inverse-color;
+$navbar-inverse-link-hover-color:           $navbar-inverse-color;
+$navbar-inverse-link-hover-bg:              $navbar-inverse-bg;
+$navbar-inverse-link-active-bg:             darken($navbar-inverse-bg, 5%);
+$navbar-inverse-link-active-color:          $navbar-inverse-color;
+//// Inverted navbar brand label
+$navbar-inverse-brand-color:                $navbar-inverse-color;
+$navbar-inverse-brand-hover-color:          $navbar-inverse-color;
+$navbar-inverse-brand-hover-bg:             transparent;
+//// Inverted navbar toggle
+$navbar-inverse-toggle-hover-bg:            transparent;
+$navbar-inverse-toggle-icon-bar-bg:         $navbar-inverse-color;
+$navbar-inverse-toggle-border-color:        transparent;
+
+//=== Inverted navbar
+// Reset inverted navbar basics
+$navbar-default-color:                      #fff;
+$navbar-default-bg:                         darken($navbar-inverse-bg, 5%);
+$navbar-default-border:                     $navbar-default-bg;
+//$navbar-default-link-color:                 #333;
+$navbar-default-link-color:                 $navbar-default-color;
+$navbar-default-link-hover-color:           $navbar-default-color;
+$navbar-default-link-hover-bg:              darken($navbar-default-bg, 2.5%);
+$navbar-default-link-active-bg:             darken($navbar-default-bg, 5%);
+$navbar-default-link-active-color:          $navbar-default-color;
+//// Inverted navbar brand label
+$navbar-default-brand-color:                $navbar-default-color;
+$navbar-default-brand-hover-color:          $navbar-default-color;
+$navbar-default-brand-hover-bg:             transparent;
+//// Inverted navbar toggle
+$navbar-default-toggle-hover-bg:            transparent;
+$navbar-default-toggle-icon-bar-bg:         $navbar-default-color;
+$navbar-default-toggle-border-color:        transparent;
+
+$navbar-height:                    30px;
+
+$border-radius-base:        0;
+$border-radius-large:       0;
+$border-radius-small:       0;
+
+$footer-height:                   30px;
+$footer-bg: $navbar-inverse-bg;
+$footer-color: $navbar-inverse-link-color;
+
+
+// Navbar collapse
+//** Point at which the navbar becomes uncollapsed.
+$grid-float-breakpoint:     1px;
+//** Point at which the navbar begins collapsing.
+$grid-float-breakpoint-max: 0px;
+
+// padding of grids
+$grid-gutter-width:20px; //30 default
+
+$nav-link-padding: 10px; //10px 15px !default;

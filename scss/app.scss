@@ -1,0 +1,233 @@
+// Variables
+@import "variables";
+//// Bootstrap
+@import "addons/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap";
+@import "addons/bootstrap-sass-3.3.7/assets/stylesheets/bootstrap-compass";
+@import "fonts";
+//
+
+body, html {
+  height: 100%;
+  font-family: 'Ubuntu', sans-serif;
+  -webkit-app-region: drag;
+}
+
+.top-drag{
+  position:absolute;
+  left:0;
+  right:0;
+  top: 0;
+  height: $navbar-height;
+  background: $main-color;
+
+}
+
+.main-nav {
+  top: 0;
+  padding-top: $top-drag-height;
+  -webkit-app-region: drag;
+  li {
+    -webkit-app-region: no-drag;
+  }
+}
+
+.window-title {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  right: 0;
+  left: 0;
+  color: #fff;
+  text-align: center;
+  -webkit-app-region: drag;
+  z-index: 10000;
+  font-size: 17px;
+}
+
+.sub-nav {
+  top: $navbar-height+$top-drag-height;
+}
+
+.navpad {
+  padding-top: $navbar-height;
+}
+
+#app {
+  height: 100%;
+  padding-top: $top-drag-height;
+  overflow:hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  height: $footer-height;
+  background: $footer-bg;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  line-height: $footer-height;
+  color: $footer-color;
+
+  a {
+    line-height: $footer-height;
+    color: $footer-color;
+    height: $footer-height;
+    padding: 7px 10px;
+    &:hover {
+      color: $footer-color;
+      background: darken($footer-bg, 5%);
+      text-decoration: none;
+    }
+  }
+}
+
+.bitcoin-price-box{
+  text-align: center;
+  .title{
+    padding: 5px 40px 0;
+    img{
+      width:250px;
+      max-width:100%;
+    }
+  }
+  .price {
+    color: $bitcoin-orange;
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 50px;
+  }
+  .price-sub{
+    color:darken($bitcoin-white, 10%);
+    font-size:14px;
+  }
+}
+.graph-title{
+  text-align: center;
+  color: $bitcoin-orange;
+  font-size:16px;
+  opacity:0;
+}
+
+.chart-box{
+  padding: 0;
+  flex-grow: 1;
+  display: flex;
+  opacity: 0;
+}
+
+@media (min-width: 300px) {
+  .bitcoin-price-box{
+    .title{
+      padding: 10px 40px 0;
+      img{
+        width:250px;
+      }
+    }
+    .price {
+      font-size: 60px;
+      line-height: 70px;
+    }
+  }
+}
+
+@media (min-width: 440px) {
+  .bitcoin-price-box{
+    .title{
+      padding: 20px 40px 0;
+      img{
+        width:250px;
+      }
+    }
+    .price {
+      font-size: 80px;
+      line-height: 100px;
+    }
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .bitcoin-price-box{
+    .title{
+      padding: 30px 40px 0;
+      img{
+        width: 300px;
+      }
+    }
+    .price {
+      font-size: 100px;
+      line-height: 120px;
+    }
+    .price-sub{
+      font-size:20px;
+    }
+  }
+  .chart-box {
+    padding: 0 40px 0 40px;
+    opacity: 1;
+  }
+  .graph-title{
+    opacity:1;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .bitcoin-price-box{
+    .title{
+      padding: 40px 40px 0;
+      img{
+        width: 400px;
+      }
+    }
+    .price {
+      font-size: 130px;
+      line-height: 140px;
+    }
+    .price-sub{
+      font-size:20px;
+    }
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .bitcoin-price-box{
+    .title{
+      padding: 40px 40px 0;
+      img{
+        width:600px;
+      }
+    }
+    .price {
+      font-size: 160px;
+      line-height: 180px;
+    }
+    .price-sub{
+      font-size:20px;
+    }
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .bitcoin-price-box{
+    .title{
+      padding: 40px 40px 0;
+      img{
+        width:600px;
+      }
+    }
+    .price {
+      font-size: 160px;
+      line-height: 180px;
+    }
+    .price-sub{
+      font-size:20px;
+    }
+  }
+
+}
