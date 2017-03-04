@@ -43,7 +43,7 @@ let win;
 var bitcoinPrice = 0;
 
 // put isDev in global
-global.sharedObject = {isDev: isDev, bitcoinPrice: bitcoinPrice};
+global.sharedObject = {isDev: isDev, bitcoinPrice: bitcoinPrice, bitcoinHistorical:{}};
 
 
 function createWindow() {
@@ -134,8 +134,8 @@ function createWindow() {
 
     // Make the popup window for the menubar
     window = new BrowserWindow({
-        width: 220,
-        height: 150,
+        width: 400,
+        height: 250,
         show: false,
         frame: false,
         backgroundColor: '#4d4d4d',
@@ -153,11 +153,25 @@ function createWindow() {
     });
 
     getPrice();
+    getBitcoinHistorical();
     setInterval(function () {
         getPrice();
+        getBitcoinHistorical();
     }, 60000);
 
 
+}
+
+function getBitcoinHistorical() {
+    var start_date = new Date();
+    var end_date = new Date();
+    end_date.setDate(start_date.getDate() - 30);
+    coindesk.historical({start_date: start_date, end_date: end_date}, function (data) {
+        data = JSON.parse(data);
+        global.sharedObject.bitcoinHistorical = data.bpi;
+        console.log(data);
+
+    });
 }
 
 function getPrice() {
