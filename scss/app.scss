@@ -9,7 +9,7 @@
 body, html {
   height: 100%;
   font-family: 'Ubuntu', sans-serif;
-  -webkit-app-region: drag;
+  -webkit-app-region: no-drag;
 }
 
 .top-drag{
@@ -25,7 +25,6 @@ body, html {
 .main-nav {
   top: 0;
   padding-top: $top-drag-height;
-  -webkit-app-region: drag;
   li {
     -webkit-app-region: no-drag;
   }
@@ -230,4 +229,28 @@ body, html {
     }
   }
 
+}
+
+.settings-list {
+  color:#ccc;
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: $bitcoin-gray;
+  }
+
+  li a {
+    display: block;
+    color: $bitcoin-white;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+
+  /* Change the link color on hover */
+  li a:hover {
+    background-color: lighten($bitcoin-gray, 10%);
+    color: $bitcoin-white;
+  }
 }
