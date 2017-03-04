@@ -78,11 +78,14 @@ function createWindow() {
         // more https://github.com/electron/electron/blob/master/docs/api/menu-item.md
         settingsMenu =  new Menu();
         settingsMenu.append(new MenuItem({
-            label: 'Round',
+            label: 'Rounding',
             type: 'checkbox',
             checked: config.round,
             click:function(menuItem, browserWindow, event){
                 config.round = menuItem.checked;
+                console.log('menuItem',menuItem);
+                console.log('browserWindow',browserWindow);
+                console.log('event',event);
                 saveConfig();
                 showPrice();
             }
@@ -109,7 +112,8 @@ function createWindow() {
         }));
 
         settingsMenu.append(new MenuItem({
-            type: 'separator'
+            type: 'separator',
+            label: 'Tray Settings',
         }));
         settingsMenu.append(new MenuItem({
             label: 'Close',
