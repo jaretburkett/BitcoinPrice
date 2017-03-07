@@ -7,6 +7,7 @@ var path = require('path');
 var storage = require('electron-json-storage');
 var moment = require('moment');
 var Chart = require('chart.js');
+var showMenu = remote.require('./main').showMenu;
 
 var ctx = document.getElementById("bitcoin-chart");
 
@@ -92,6 +93,14 @@ $(function () {
         updatePrices();
     }, 1000);
 
+
+    $('.quit-app').click(function(){
+        var window = remote.getCurrentWindow();
+        window.close();
+    })
+    $('.settings').click(function(){
+        showMenu(false);
+    })
 });
 
 
@@ -131,6 +140,7 @@ window.addEventListener('mousewheel', function (e) {
 
     }
 });
+
 
 function formatNumber(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

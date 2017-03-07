@@ -1,3 +1,14 @@
+// TODO Run on boot with option
+//TODO Change graph settings
+
+/**
+ * teamID = WHA368T2B7
+ * bundleID = io.jaret.bitcoinprice
+ * Identifier:WHA368T2B7.io.jaret.bitcoinprice
+ * App ID Description:Bitcoin Price Ticker
+ *
+ */
+
 const {app, BrowserWindow, ipcMain, Tray, Menu, MenuItem} = require('electron');
 app.dock.hide(); // hide dock
 const path = require('path');
@@ -64,72 +75,7 @@ function createWindow() {
         }
     });
     tray.on('right-click', function (event) {
-        const trayPos = tray.getBounds();
-        const windowPos = window.getBounds();
-        var x, y = 0;
-        if (process.platform == 'darwin') {
-            x = Math.round(trayPos.x + (trayPos.width / 2) - (windowPos.width / 2))
-            y = Math.round(trayPos.y + trayPos.height)
-        } else {
-            x = Math.round(trayPos.x + (trayPos.width / 2) - (windowPos.width / 2))
-            y = Math.round(trayPos.y + trayPos.height * 10)
-        }
-
-        // more https://github.com/electron/electron/blob/master/docs/api/menu-item.md
-        settingsMenu =  new Menu();
-        settingsMenu.append(new MenuItem({
-            label: 'Rounding',
-            type: 'checkbox',
-            checked: config.round,
-            click:function(menuItem, browserWindow, event){
-                config.round = menuItem.checked;
-                console.log('menuItem',menuItem);
-                console.log('browserWindow',browserWindow);
-                console.log('event',event);
-                saveConfig();
-                showPrice();
-            }
-        }));
-        settingsMenu.append(new MenuItem({
-            label: 'Comma Separator',
-            type: 'checkbox',
-            checked: config.showCommaSeparator,
-            click:function(menuItem, browserWindow, event){
-                config.showCommaSeparator = menuItem.checked;
-                saveConfig();
-                showPrice();
-            }
-        }));
-        settingsMenu.append(new MenuItem({
-            label: 'Currency Symbol',
-            type: 'checkbox',
-            checked: config.showCurrencySymbol,
-            click:function(menuItem, browserWindow, event){
-                config.showCurrencySymbol = menuItem.checked;
-                saveConfig();
-                showPrice();
-            }
-        }));
-
-        settingsMenu.append(new MenuItem({
-            type: 'separator',
-            label: 'Tray Settings',
-        }));
-        settingsMenu.append(new MenuItem({
-            label: 'Close',
-            type: 'normal',
-            click: function() {
-                closeApp();
-            }
-        }));
-
-        tray.popUpContextMenu(settingsMenu,{x:x, y:y});
-        // toggleWindow('settings.html');
-        //
-        // // Show devtools when command clicked
-        // if (window.isVisible() && process.defaultApp && event.metaKey) {
-        //     window.openDevTools({mode: 'detach'})
-        // }
+        showMenu(true);
     });
 
     // Make the popup window for the menubar
@@ -161,6 +107,74 @@ function createWindow() {
 
 
 }
+
+var showMenu = function(inTaskbar){
+    const trayPos = tray.getBounds();
+    const windowPos = window.getBounds();
+    var x, y = 0;
+    if (inTaskbar) {
+        x = Math.round(trayPos.x + (trayPos.width / 2) - (windowPos.width / 2))
+        y = Math.round(trayPos.y + trayPos.height)
+    } else {
+        x = Math.round(trayPos.x + (trayPos.width / 2) - (windowPos.width / 2))+1000;
+        y = Math.round(trayPos.y + trayPos.height)+1000
+    }
+
+    // more https://github.com/electron/electron/blob/master/docs/api/menu-item.md
+    settingsMenu =  new Menu();
+    settingsMenu.append(new MenuItem({
+        label: 'Rounding',
+        type: 'checkbox',
+        checked: config.round,
+        click:function(menuItem, browserWindow, event){
+            config.round = menuItem.checked;
+            console.log('menuItem',menuItem);
+            console.log('browserWindow',browserWindow);
+            console.log('event',event);
+            saveConfig();
+            showPrice();
+        }
+    }));
+    settingsMenu.append(new MenuItem({
+        label: 'Comma Separator',
+        type: 'checkbox',
+        checked: config.showCommaSeparator,
+        click:function(menuItem, browserWindow, event){
+            config.showCommaSeparator = menuItem.checked;
+            saveConfig();
+            showPrice();
+        }
+    }));
+    settingsMenu.append(new MenuItem({
+        label: 'Currency Symbol',
+        type: 'checkbox',
+        checked: config.showCurrencySymbol,
+        click:function(menuItem, browserWindow, event){
+            config.showCurrencySymbol = menuItem.checked;
+            saveConfig();
+            showPrice();
+        }
+    }));
+
+    settingsMenu.append(new MenuItem({
+        type: 'separator',
+        label: 'Tray Settings',
+    }));
+    settingsMenu.append(new MenuItem({
+        label: 'Close',
+        type: 'normal',
+        click: function() {
+            closeApp();
+        }
+    }));
+    if(inTaskbar){
+        tray.popUpContextMenu(settingsMenu,{x:x, y:y});
+    } else {
+        settingsMenu.popup(window, {});
+    }
+
+
+};
 
 function getBitcoinHistorical() {
     var start_date = new Date();
@@ -275,4 +289,4 @@ function saveConfig(){
     });
 }
 
-
+exports.showMenu = showMenu;
