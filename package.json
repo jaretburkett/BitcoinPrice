@@ -1,7 +1,7 @@
 {
   "name": "bitcoinprice",
   "productName": "BitcoinPrice",
-  "version": "1.0.102",
+  "version": "1.0.103",
   "description": "A proifram that shows bitcoin price info",
   "main": "main.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "sass": "./node_modules/.bin/gulp sass",
     "watch-sass": "./node_modules/.bin/gulp sass:watch",
     "package-mac": "./node_modules/.bin/electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
-    "package-mas": "./node_modules/.bin/electron-packager . --overwrite --platform=mas --app-bundle-id=\"io.jaret.bitcoinprice\" --helper-bundle-id=io.jaret.bitcoinprice.helper --app-category-type=public.app-category.finance --app-version=1.0.102 --buildVersion=1.0.102 --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-mas": "./node_modules/.bin/electron-packager . --overwrite --platform=mas --app-bundle-id=\"io.jaret.bitcoinprice\" --helper-bundle-id=io.jaret.bitcoinprice.helper --app-category-type=public.app-category.finance --app-version=1.0.103 --buildVersion=1.0.103 --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
     "sign-mas": "./node_modules/.bin/electron-osx-sign ./release-builds/BitcoinPrice-mas-x64/BitcoinPrice.app --provisioning-profile=./bitcoinprice.provisionprofile --entitlements=./parent.plist --entitlements-inherit=./child.plist --app-bundleId=\"io.jaret.bitcoinprice\" --identity=\"3rd Party Mac Developer Application: Jaret Burkett (WHA368T2B7)\" --verbose",
     "flat-mas": "./node_modules/.bin/electron-osx-flat ./release-builds/BitcoinPrice-mas-x64/BitcoinPrice.app --install=/Applications --provisioning-profile=./bitcoinprice.provisionprofile --app-bundleId=\"io.jaret.bitcoinprice\" --identity=\"3rd Party Mac Developer Installer: Jaret Burkett (WHA368T2B7)\" --verbose",
     "package-win": "./node_modules/.bin/electron-packager . --overwrite --asar=true --platform=win32 --arch=ia32 --icon=assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=\"Jaret Burkett\" --version-string.FileDescription=\"A Bitcoin Price Ticker\" --version-string.ProductName=\"Bitcoin Price\"",

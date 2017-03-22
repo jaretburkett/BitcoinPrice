@@ -161,7 +161,7 @@ var showMenu = function(inTaskbar){
         label: 'Tray Settings',
     }));
     settingsMenu.append(new MenuItem({
-        label: 'Close',
+        label: 'Quit',
         type: 'normal',
         click: function() {
             closeApp();
@@ -181,18 +181,26 @@ function getBitcoinHistorical() {
     var end_date = new Date();
     end_date.setDate(start_date.getDate() - 30);
     coindesk.historical({start_date: start_date, end_date: end_date}, function (data) {
-        data = JSON.parse(data);
-        global.sharedObject.bitcoinHistorical = data.bpi;
-        console.log(data);
+        try {
+            data = JSON.parse(data);
+            global.sharedObject.bitcoinHistorical = data.bpi;
+            console.log(data);
+        } catch(e){
+
+        }
 
     });
 }
 
 function getPrice() {
     coindesk.currentPrice(function (data) {
-        data = JSON.parse(data);
-        bitcoinPrice = data.bpi.USD.rate_float.toFixed(2);
-        showPrice();
+        try{
+            data = JSON.parse(data);
+            bitcoinPrice = data.bpi.USD.rate_float.toFixed(2);
+            showPrice();
+        } catch(e){
+
+        }
     });
 }
 
